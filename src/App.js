@@ -13,6 +13,7 @@ import { setCurrentUser } from './redux/user/user.actions';
 import './App.css';
 
 class App extends React.Component {
+  debugger;
   unsubscribeFromAuth = null;
 
   componentDidMount() {
@@ -29,15 +30,20 @@ class App extends React.Component {
               ...snapshot.data(), 
             }
           )
-          console.log(this.state);
+          
         });
       }
-
+      
       setCurrentUser(userAuth);
     });
   }
 
   componentDidUpdate() {
+    debugger; 
+  }
+
+  componentWillUnmount() {
+    debugger;
     this.unsubscribeFromAuth();
   }
 
@@ -61,11 +67,13 @@ class App extends React.Component {
 }
 
 const mapStateToProps = ({ user }) => ({
-  currentUser: user.currentUser
+  currentUser: user.currentUser 
 })
 
 const mapDispatchToProps = dispatch => ({
-  setCurrentUser: (user) => dispatch(setCurrentUser(user))
+  setCurrentUser: (user) => {
+    debugger;
+    dispatch(setCurrentUser(user))}
 });
 
 export default connect(
